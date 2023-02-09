@@ -81,6 +81,7 @@ w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:7545"))
 # From `crypto_wallet.py import the functions generate_account, get_balance,
 #  and send_transaction
 # YOUR CODE HERE
+from crypto_wallet import generate_account, get_balance 
 
 ################################################################################
 # KryptoJobs2Go Candidate Information
@@ -90,28 +91,28 @@ w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:7545"))
 candidate_database = {
     "Lane": [
         "Lane",
-        "0xaC8eB8B2ed5C4a0fC41a84Ee4950F417f67029F0",
+        "0xdeC9e6C2bC11bf121B3de6FdfeA324dC7E2792FB",
         "4.3",
         0.20,
         "Images/lane.jpeg",
     ],
     "Ash": [
         "Ash",
-        "0x2422858F9C4480c2724A309D58Ffd7Ac8bF65396",
+        "0x02225fBB07e3f5003017063b1aF8Fdf00580787B",
         "5.0",
         0.33,
         "Images/ash.jpeg",
     ],
     "Jo": [
         "Jo",
-        "0x8fD00f170FDf3772C5ebdCD90bF257316c69BA45",
+        "0xb5249209b759d3DF85bA3cD896122A148348091b",
         "4.7",
         0.19,
         "Images/jo.jpeg",
     ],
     "Kendall": [
         "Kendall",
-        "0x8fD00f170FDf3772C5ebdCD90bF257316c69BA45",
+        "0x5C77e4eeae0f0FFcA71FC871777bc05c44f903aA",
         "4.1",
         0.16,
         "Images/kendall.jpeg",
@@ -157,11 +158,12 @@ st.sidebar.markdown("## Client Account Address and Ethernet Balance in Ether")
 # @TODO:
 #  Call the `generate_account` function and save it as the variable `account`
 # YOUR CODE HERE
+account = generate_account()
 
 ##########################################
 
 # Write the client's Ethereum account address to the sidebar
-st.sidebar.write(account.address)
+
 
 ##########################################
 # Step 1 - Part 5:
@@ -173,6 +175,13 @@ st.sidebar.write(account.address)
 # Call `get_balance` function and pass it your account address
 # Write the returned ether balance to the sidebar
 # YOUR CODE HERE
+
+
+cbalance = get_balance(w3, account.address)
+
+st.sidebar.markdown("## Your Balance of Ether")
+st.sidebar.markdown(cbalance)
+st.sidebar.markdown("---------")
 
 ##########################################
 
